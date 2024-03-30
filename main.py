@@ -28,6 +28,21 @@ bot = Client("bot",
              api_id= 28590119,
              api_hash= "2494557bf21e6c5152f26070aa1a97c7")
 
+def main(downloader, hls_use_mpegts):
+    # Your existing logic here...
+    print("Downloader:", downloader)
+    print("HLS use MPEG-TS:", hls_use_mpegts)
+
+# Add this block to parse command-line arguments
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Description of your script")
+    parser.add_argument("--downloader", help="Downloader option")
+    parser.add_argument("--hls-use-mpegts", help="HLS use MPEG-TS option")
+    args = parser.parse_args()
+
+    # Call the main function with parsed arguments
+    main(args.downloader, args.hls_use_mpegts)
+
 
 @bot.on_message(filters.command(["start"]) & filters.user(ADMINS))
 async def account_login(bot: Client, m: Message):
@@ -218,18 +233,3 @@ async def account_login(bot: Client, m: Message):
 bot.run()
 
 
-
-def main(downloader, hls_use_mpegts):
-    # Your main application logic here
-    print("Downloader:", downloader)
-    print("HLS use MPEG-TS:", hls_use_mpegts)
-
-if __name__ == "__main__":
-    # Parse command-line arguments
-    parser = argparse.ArgumentParser(description="Description of your script")
-    parser.add_argument("--downloader", help="Downloader option")
-    parser.add_argument("--hls-use-mpegts", help="HLS use MPEG-TS option")
-    args = parser.parse_args()
-
-    # Call main function with parsed arguments
-    main(args.downloader, args.hls_use_mpegts)
