@@ -21,6 +21,7 @@ from config import *
 import sys
 import re
 import os
+import argparse
 
 bot = Client("bot",
              bot_token= "6877953837:AAHR34gO4HBA-b8z6w5bwWRo9mtqJzPd9Zk",
@@ -215,3 +216,20 @@ async def account_login(bot: Client, m: Message):
 
 
 bot.run()
+
+
+
+def main(downloader, hls_use_mpegts):
+    # Your main application logic here
+    print("Downloader:", downloader)
+    print("HLS use MPEG-TS:", hls_use_mpegts)
+
+if __name__ == "__main__":
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(description="Description of your script")
+    parser.add_argument("--downloader", help="Downloader option")
+    parser.add_argument("--hls-use-mpegts", help="HLS use MPEG-TS option")
+    args = parser.parse_args()
+
+    # Call main function with parsed arguments
+    main(args.downloader, args.hls_use_mpegts)
